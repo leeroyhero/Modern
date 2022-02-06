@@ -12,5 +12,11 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Modern"
+rootProject.name = "modern"
+def includeFeatureModule = { name ->
+    include ":${name}"
+    project(":${name}").projectDir = new File(rootDir, "modules/feature/${name}")
+}
+
 include ':app'
+includeFeatureModule("list")
